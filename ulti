@@ -1,0 +1,74 @@
+   
+
+stack<int> s1;
+stack<int> s2;
+
+void push(int x){
+  while(!s2.empty()){
+	s1.push(s2.top());
+	s2.pop();
+  }
+  s2.push(x);
+  while(!s1.empty()){
+    int a=s1.top();
+	s2.push(a);
+	s1.pop();
+  }
+}
+
+void pop(){
+ int a=s2.top();
+ cout<<a<<" ";
+ s1.pop();
+}
+
+struct node{
+ int data;
+ node* next;
+};
+
+unordered_set<node*> s;
+
+bool loop(node* node){
+while(node!=null){
+ if(s.find(node)!=s.end())
+ return true;
+ else
+ s.push(node);
+ node=node->next;
+}
+return false;
+}
+
+void reverse(node* head){
+ node *a,*b=NULL;
+ while(head!=NULL){
+   a=head->next;
+   head->next=b;
+   b=head;
+   head=a;
+ }
+}
+
+void recur(node *head,node *b){
+  if(head==NULL)
+  return;
+  node *a=head->next;
+  head->next=b;
+  recur(a,head);
+}
+
+static bool comp(job a,job b){
+  return a.salary<b.salary; //ascending
+}
+sort(arr,arr+n,comp);
+
+Link for 51914 course: https://ievolveng.ultimatix.net/ievolve/coursedetails/51914
+
+https://tcsxp.webex.com/webappng/sites/tcsxp/dashboard?siteurl=tcsxp
+
+https://knome.ultimatix.net/communities/22423/media_files - email
+
+https://knome.ultimatix.net/communities/22423/media_directories/59743 - knome bizz project doc
+
+https://knome.ultimatix.net/blogposts/613791-review-the-power-of-teaming - ted talk
