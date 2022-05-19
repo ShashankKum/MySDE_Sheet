@@ -1,3 +1,38 @@
+//N Meetings in a room, in this we sort based on departure time and when the departure time matches we sort on basis of arrival time in descending order.
+//Time complexity will O(NlogN)
+//Space used will be O(2N).
+
+
+class Solution
+{
+    public:
+    //Function to find the maximum number of meetings that can
+    //be performed in a meeting room.
+    static bool comp(const pair<int,int> &a,const pair<int,int> &b){
+        return (a.second==b.second)?(a.first>b.first):(a.second<b.second);
+    }
+    int maxMeetings(int start[], int end[], int n)
+    {
+        if(n==1)  return 1;
+        vector<pair<int,int>> job(n);
+        int cnt=1;
+        for(int i=0;i<n;i++){
+            job[i].first = start[i];
+            job[i].second = end[i];
+        }
+        sort(job.begin(),job.end(),comp);
+        int dept = job[0].second;
+        for(int i=1;i<n;i++){
+            if(job[i].first>dept){
+                cnt++;
+                dept = job[i].second;
+            }
+        }
+        return cnt;
+    }
+};
+
+
 //Activity selection problem....to get the maximum number of non intersecting intervals
 //Same approach for N meeting room also
 //in this we sort the vector of structure based on deaprture time and start checking all the non intersecting intervals based on first...

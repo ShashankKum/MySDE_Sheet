@@ -1,6 +1,36 @@
 //Merge List
 //This is the tougher version where we do not use extra space
 
+
+//In this we create a new list but use the previous nodes only to connect to prevent extra space
+//Whenever we need to create a new node we need to create it using new keyword or else only refrence will be created.
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1==NULL)  return list2;
+        if(list2==NULL)  return list1;
+        ListNode *head=new ListNode;
+        ListNode *n1=head;
+        while(list1!=NULL && list2!=NULL){
+            if(list1->val > list2->val){
+                n1->next=list2;
+                n1=list2;
+                list2=list2->next;
+            }
+            else{
+                n1->next=list1;
+                n1=list1;
+                list1=list1->next;
+            } 
+        }
+        (list1==NULL) ? n1->next=list2 : n1->next=list1;
+        return head->next;
+    }
+};
+
+
+
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {

@@ -5,7 +5,8 @@ class Solution {
 public:
     int arr[2000][2000];
     int bo[2000][2000];
-    int check(string s,int i,int j)t //palindrome is also checked using dp to reduce the time 
+
+    int check(string s,int i,int j)t //palindrome is also checked using dp to reduce the time, since same substrings can be needed to be checked for different strings, so check if marked
     {
         if(i>=j)
             return 1;
@@ -15,6 +16,7 @@ public:
             return 0;
         return bo[i][j]=check(s,i+1,j-1);
     }
+
     int part(string s,int i,int j){
         if(arr[i][j]!=-1)
         return arr[i][j];
@@ -22,14 +24,12 @@ public:
         return 0;
         int ans=99999999,l,r;
         for(int k=i;k<j;k++){ //since we also have to take k+1
-        if(arr[i][k]!=-1)
-        l=arr[i][k];
-        else
-        l=part(s,i,k);
-        if(arr[k+1][j]!=-1)
-        r=arr[k+1][j];
-        else
-        r=part(s,k+1,j);
+
+        if(arr[i][k]!=-1)  l=arr[i][k];
+        else  l=part(s,i,k);
+        if(arr[k+1][j]!=-1)  r=arr[k+1][j];
+        else  r=part(s,k+1,j);
+
         int mi= 1+l+r;
         ans=min(mi,ans);
         }

@@ -1,7 +1,11 @@
 //FLOYD CYCLE DETECTION ALGORITHM
+//In this there are n element array and values are between (1-n-1)...only one term is repeating.
+//When there are duplicate elements the array will form a cycle and one element before the cyle point will be the duplicate element.
+//since using floyd cyle dtection we used to get the cycle point in linkedlist, it is somewhat similar we just need to stop when slow and fast matches.
 //array is immutable(cant be modified)
-//values are between (1-n-1)...only one term is repeating
-//it is also known as hare and tortoise method
+//If array would not be immutable we would have simply marked the indexes for the values visited as negative and get the work done.
+//it is also known as hare and tortoise method.
+
 
 #include<bits/stdc++.h>
 using namespace std;

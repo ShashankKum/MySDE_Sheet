@@ -43,3 +43,5 @@ int gcd(int a,int b){
 	return a;
 	return gcd(b,a%b);
 }
+
+//LCM(a,b) = (a*b)/gcd(a,b);

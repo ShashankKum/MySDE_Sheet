@@ -1,23 +1,29 @@
-//In this we first find k(the position after which all elements are in descending order),than we again look for an index(i) where //nums[i]>nums[k], and than swap(nums[k],nums[i])..to swap k with the next greatest element.
+//In this we first find i(the position after which all elements are in descending order),than we again look for an index(i) where //nums[i]>nums[k], and than swap(nums[k],nums[i])..to swap k with the next greatest element.
 //than we reverse k+1 till end.
 
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        int n=nums.size(),k=n-1;
-        if(n==1) return;
-        int a=-1;  //a initialized to minimum value
-        while(k>=0 && nums[k]>=a){  //k will finally reach the index after which all elements are sorted in descending order
-            if(k==0){  //means we have reached the last permutation so next one will be the first permutation
-               reverse(nums.begin(),nums.end()); 
-               return; 
-            }
-            a=nums[k];
-            k--;
+        int l=nums.size()-1,i=l;
+        //Get the point till which values are increasing
+        while(i>0 && nums[i]<=nums[i-1]){
+            i--;
         }
-        int i=n-1;
-        while(nums[i]<=nums[k]) i--; //first element from last where nums[i]>nums[k]
-        swap(nums[k],nums[i]);
-        reverse(nums.begin()+(k+1),nums.end()); //reverse the part after k
+        //if we reach the start means we need the min number now to start with the permutoations
+        if(i==0){
+            swap(nums[i],nums[l]);
+            sort(nums.begin(),nums.end());
+        }
+        //else we swap i-1'th index with the just greater value available from [i->l]
+        else{
+            for(int j=l;j>=i;j--){
+                if(nums[j]>nums[i-1]){
+                    cout<<j<<" "<<i-1;
+                    swap(nums[j],nums[i-1]);
+                    sort(nums.begin()+i,nums.end());
+                    break;
+                }
+            }
+        }
     }
 };

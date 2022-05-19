@@ -1,5 +1,6 @@
 //Longest common substring is similar to longest common subsequence.
 //In this whenever there is not a match arr[i][j] simply becomes 0.
+//O(N^2) time complexity
 
 class Solution{
     public:
@@ -19,3 +20,22 @@ class Solution{
         return ma;
     }
 };
+
+
+//recursive solution for the same
+//If match do not occurs means the chain is broken so make the count as 0, in all cases we need to take three cases as we dont know wether the current match will go further or not
+
+int lcs(int i, int j, int count)
+{
+ 
+    if (i == 0 || j == 0)
+        return count;
+ 
+    if (X[i - 1] == Y[j - 1]) {
+        count = lcs(i - 1, j - 1, count + 1);
+    }
+    count = max(count,
+                max(lcs(i, j - 1, 0),
+                    lcs(i - 1, j, 0)));
+    return count;
+}

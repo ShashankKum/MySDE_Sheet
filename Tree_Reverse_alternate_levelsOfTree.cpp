@@ -11,6 +11,7 @@ void reverseAlternate(Node *root)
     q.push(root);
     bool l=0;
     while(!q.empty()){     //doing level order traversal
+
         int k=q.size();
         while(k--){
         Node* n=q.front();
@@ -22,6 +23,7 @@ void reverseAlternate(Node *root)
         if(n->left!=NULL) q.push(n->left);
         if(n->right!=NULL) q.push(n->right);
         }
+
         if(l==1){   //reverse the elements of odd level
             while(!level.empty()){
                 Node *a=level.front();  //get pointer to leftmost node

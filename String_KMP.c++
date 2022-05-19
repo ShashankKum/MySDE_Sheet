@@ -10,17 +10,17 @@ public:
         int i=1,len=0;
         arr[0]=0;
         while(i<n){
-        if(s[i]==s[len]){
+        if(s[i]==s[len]){              //if there is a match, simply len and i gets incremented, and we store the incremented len in arr[i], as this is now the new current lsp
             len++;
             arr[i]=len;  i++;
         }
         else{
-            if(len==0){
+            if(len==0){       //if not a match but len is 0 it means simply store 0 in arr[i] and move forward
                 arr[i]=0; 
                 i++;
             }
              else
-              len=arr[len-1]; //we do not increment i here
+              len=arr[len-1];   //it will be equal to the longest suffix prefix(lsp) match till the last matched, i will not be incremented till we dont reach a match 
         }
         }
     }
@@ -55,3 +55,4 @@ public:
         return -1; //this will happen only when the complete pattern is not found
     }
 };
+

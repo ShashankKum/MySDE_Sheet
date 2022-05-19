@@ -16,8 +16,10 @@
 using namespace std;
 
 void permute(string s,int i,int j,vector <string> &v){
-    if(i==j)
+    if(i==j){
     v.push_back(s);
+    return
+    }
     for(int k=i;k<=j;k++){
         //do
         swap(s[k],s[i]);

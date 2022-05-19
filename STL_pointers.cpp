@@ -1,4 +1,14 @@
 //STL
+
+//Time complexity for sorting vector<string> is O(l*nlogn) where n is the size of vector and l is the max length of any string, since comparing two strings take O(l) time unlike numbers 
+  which only take O(1) time. The strings will be sorted in lexicographical order i.e dictionary order.
+
+//Use of comp function to sort vaector of pairs.
+static bool comp(const pair<int,int> &a,const pair<int,int> &b){
+        return (a.second==b.second)?(a.first>b.first):(a.second<b.second);
+    }
+
+
 //Double ended queue is queue in which insertion and deletion takes place at both the ends,and has all functions similar as vector.
 //In map,vector,deque(double ended queue..which is implemented using double linked list),set(has only unique elements) all these have similar functions..i.e
 
@@ -18,12 +28,12 @@
 //find()->to check if a value exists or not....map->mp.find(x),set->s.find(x),vector->v.find(v.begin(),v.end(),x),deque->d.find(x)
 
 
-//find in vector is somewhat different it returns the iterator to the first similar element to be found or else if not found returns v.end()(returning
+//find returns the iterator to the first similar element to be found or else if not found returns v.end()(returning
 //v.end() is same for other stls too).
     it = find (vec.begin(), vec.end(), ser); 
     if (it != vec.end()) 
     { 
-        std::cout << "Element " << ser <<" found at position : " ; 
+        std::cout << "Element " << ser <<" found at position : " ;
         std::cout << it - vec.begin() << " (counting from zero) \n" ;
     } 
 //vector has pop_back() but not pop_front()

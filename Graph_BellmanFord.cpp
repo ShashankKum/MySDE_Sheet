@@ -25,7 +25,7 @@ void bellman(int n,int e,vector <pair<pi,int>> v){
             int w=v[j].second;
             if(dist[b]>dist[a]+w)  //relaxation for each edge done n-1 times, where n is no of vertices
             dist[b]=dist[a]+w;
-        }
+        } 
     }
     
      for(int j=0;j<e;j++){  //if after n-1 loops still value decreses means there is a negative edge cycle

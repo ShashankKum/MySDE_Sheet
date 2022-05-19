@@ -3,6 +3,29 @@ Sliding Window(fixed) Topics->
 2. count of occurence of anagrams
 3. max of all subarrays of size k
 
+//In this we need to find all start positions of all anagrams possible in a string.
+//For this we need to use sliding window since the size to be looked after will always be equivalent to pattern size.
+//Time taken will be O(N) and space will be O(1)  since size of vector is fixed i.e 26.
+
+
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> ans;
+        //using (char-'a') we can fix the indexes for ech char between [0,25]
+        vector<int> goal(26),cur(26);  //while declaring vectors by default there initial values are 0
+        int n = p.size();
+        for(int i=0;i<n;i++)  goal[p[i]-'a']++;       //fix the characters for the pattern
+        for(int i=0;i<s.size();i++){
+            cur[s[i]-'a']++;                         //add a new character
+            if(i>=n)  cur[s[i-n]-'a']--;             //remove the old one for which window crosses over i.e (i-n)     
+            if(goal==cur)   ans.push_back(i-n+1);   //if characters of cur window matches that of pattern we have an answer
+        }
+        return ans;
+    }
+};
+
+//It can also be solved using map but it will be more complicated.
 
 //In this we make use of sliding window technique,in which we have a window of length pattern(p), so whenever the window moves only
 //change is the first element of window is getting removed and one new element is being added at end,so we just need to change both,

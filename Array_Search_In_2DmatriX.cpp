@@ -1,4 +1,4 @@
-//In this as each row is sorted we can do a binary search in each row,and we also know that first integer of each row is greater //than the last integer of the previous row, so we check the feasible row first and than do a binary search.
+//In this as each row is sorted we can do a binary search in each row,and we also know that first integer of each row is greater than the last integer of the previous row, so we check the feasible row first and than do a binary search.
 //It will take O(logN) time.
 
 class Solution {

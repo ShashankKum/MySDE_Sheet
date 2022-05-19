@@ -13,7 +13,7 @@ string Solution::solve(string A) {
         reverse(r.begin(),r.end());
         ans="";
         ans+=l+r;
-        if(ans>A) return ans;  //if taking reverse of left half in right will don so return the same
+        if(ans>A) return ans;  //if taking reverse of left half in right will do so return the same
         else{
             int car,a,i;
             if(n%2==0) i=n/2-1;

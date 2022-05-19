@@ -61,3 +61,23 @@ public:
         return newNode;
     }
 };
+
+//recursive solution
+
+class Solution {
+public:
+    ListNode* recur(ListNode *head,ListNode *temp){
+        if(head==NULL)
+            return temp;
+        ListNode* new1=head->next;
+        head->next=temp;
+        temp=head;
+        head=new1;
+        return recur(head,temp);  //in recursion we return the function call so that the end returned value is recursively returned back
+    }
+    ListNode* reverseList(ListNode* head) {
+        if(head==NULL || head->next==NULL)
+            return head;
+        return recur(head,NULL);
+    }
+};

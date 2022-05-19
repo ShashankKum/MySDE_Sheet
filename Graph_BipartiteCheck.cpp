@@ -1,3 +1,6 @@
+//To check if a graph is bipartite or not we need to check if vertexes for each edge do not lie in the same set.
+//To achieve it we can check if it is possible to colour the graph with two different colours or not.
+
 class Solution {
 public:
     int b[100002];

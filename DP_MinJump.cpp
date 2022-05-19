@@ -26,3 +26,36 @@ public:
         return dp(nums,0,l,v);
     }
 };
+
+
+//The best solution is O(N) solution, in this we make use of three variables, 
+  1. maxReach -> it will contain the max index we can reach from current index, it will updated at each step -> maxReach = max(maxReach, i + arr[i]);
+  2. step -> It will hold the steps in our hand,how much we can move from now, it will be updated once the steps becomes 0(means we have traversed through all element possible to reach
+             from the last element where we updated.
+              
+             if (step == 0) {
+             jump++;
+             if(i>=maxReach)
+               return -1;
+             step = maxReach - i;
+             } 
+
+  3. jump -> it will increase once step becomes zero, since it means atleast one jump is utilised
+
+
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        if(nums.size()==1)  return 0;
+        int step=nums[0],max_ind=nums[0],n=nums.size(),jump=1;
+        for(int i=1;i<n;i++){
+            if(step==0){
+                step =  max_ind-i+1;
+                jump++;
+            }
+            step--;
+            max_ind = max(max_ind,i+nums[i]);
+        }
+        return jump;
+    }
+};

@@ -48,7 +48,7 @@ public:
 //Memoized solution matching the time complexity of DP.
 class Solution{
 public:
-   int a[100][100];
+    int a[100][100];
     int multiply(int arr[],int i,int j){ //i and j included
     if(i==j) 
     return 0;

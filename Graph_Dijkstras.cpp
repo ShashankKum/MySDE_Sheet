@@ -1,8 +1,9 @@
-#include <bits/stdc++.h>
+12#include <bits/stdc++.h>
 using namespace std;
 #define pi pair<int,int>
 #define infy 999999
 
+//In dijkstras if the node is 
 //first value of priority queue is the largest and rest are arranged in non increasing order, push() can be used 
 //to push the value at end in priority queue and pop() removes the first element from priority queue, top() also
 //returns the first element, it is implemented using max heap.

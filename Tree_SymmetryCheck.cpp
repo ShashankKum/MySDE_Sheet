@@ -18,6 +18,24 @@ public:
     }
 };
 
+//More precise recursive solution
+
+class Solution {
+public:
+    bool recur(TreeNode* r1,TreeNode* r2){
+        if(r1==NULL && r2==NULL) 
+            return true;
+        //if both are not null at the same time or if value do not matches return false
+        if(r1==NULL || r2==NULL || r1->val!=r2->val)
+            return false;
+//In this if any one recur gets false it will return false and recursively each time false will be returned as true&&false=false
+        return (recur(r1->left,r2->right))&&(recur(r1->right,r2->left));
+    }
+    bool isSymmetric(TreeNode* root) {
+        return recur(root->left,root->right);
+    }
+};
+
 //Iterative approach using level order traversal with on queue.
 //The queue will store the nodes such that the symmetry nodes are adjacent to each other,for better understanding you can use two different queues too.
 //Check if values of symmetry node are same or not and if NULL occurs than it occurs at both position or not.

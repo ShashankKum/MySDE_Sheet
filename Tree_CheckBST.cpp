@@ -21,3 +21,31 @@ public:
         return flag;
     }
 };
+
+//Another bottom up approach
+
+//In this we basically move bottom up and in each case return the max and min pair of each subtree.
+//We than check for each root of subtree wether it is greater than max value of left subtree and smaller than min value of right subtree
+//This just requires a single postorder traversal so we can do it in O(N) time.
+
+class Solution {
+public:
+    #define pi pair<long long int,long long int>  //max,min
+    #define ll long long int
+    bool flag=true;
+    
+    pi recur(TreeNode* root){
+        if(root==NULL)  return {-9999999999,9999999999};  //Base condition if root beacomes NULL
+        pi l = recur(root->left);
+        pi r = recur(root->right);
+        ll ma = max(r.first,(ll)root->val);
+        ll mi = min(l.second,(ll)root->val);
+        if(root->val<=l.first || root->val>=r.second)  flag=false;   //if for any subtree bst condition not fulfilled than entire tree is not a BST
+        return {ma,mi};               //max of right subtree, min of left subtree being returned
+    }
+    
+    bool isValidBST(TreeNode* root) {
+        recur(root);
+        return flag;
+    }
+};

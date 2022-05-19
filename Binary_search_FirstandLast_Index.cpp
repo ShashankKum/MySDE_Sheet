@@ -11,14 +11,14 @@ public:
         int i=0,j=nums.size()-1;
         int l,r,mid;
         while(i<=j){        //used to get the rightmost element
-            mid=i+(j-i)/2;  //to avoid overflow
+            mid=i+(j-1)/2;  //to avoid overflow
             if(nums[mid]<=target)  i=mid+1;
             else  j=mid-1;
         }
         r=i;
         i=0,j=nums.size()-1;
         while(i<=j){        //used to get the leftmost element
-            mid=i+(j-i)/2;
+            mid=i+(j-1)/2;
             if(nums[mid]>=target)  j=mid-1;
             else  i=mid+1;
         }
